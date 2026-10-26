@@ -21,7 +21,7 @@ class Mark(models.Model):
         ('не аттестовано', 'Не аттестовано'),
     ]
     
-    grade = models.IntegerField(choices=GRADE_CHOICES)
+    grade = models.CharField(choices=GRADE_CHOICES)
 
     def __str__(self):
         return str(self.grade)
