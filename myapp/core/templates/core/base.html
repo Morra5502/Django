@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel = "stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <header>
+        <h1> {% block header %}  {% endblock %}</h1>
+    </header>
+
+    <main>
+        <nav>
+            <ul>
+                {% block nav %}
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'about' %}">О нас</a></li>
+                {% endblock %}
+            </ul>
+        </nav>
+        <section>
+            {% block content %}
+            {% endblock %}
+        </section>
+
+        <footer>
+            <p> &copy {% now "Y" %} - {% block footer %} Копирование запрещено {% endblock %} </p>
+        </footer>
+    </main>
+</body>
+</html>
