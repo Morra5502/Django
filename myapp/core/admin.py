@@ -1,11 +1,10 @@
 from django.contrib import admin
 
-from .models import Group, Student, Discipline, Mark, StudentDiscipline
+from .models import * 
 
 # Register your models here.
 
-admin.site.register(Group)
-admin.site.register(Student)
-admin.site.register(Discipline)
-admin.site.register(Mark)
-admin.site.register(StudentDiscipline)
+admin.site.register(User)
+admin.site.register(Event)
+admin.site.register(Registration)
+admin.site.register(Result)
