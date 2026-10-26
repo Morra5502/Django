@@ -2,8 +2,27 @@
 {% block title %} title {% endblock %}
 {% block header %} Главная {% endblock %}
 {% block content %}
-    <h1>Крутой миньон</h1>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-0lEsXH1ovvj6LrvQaQ7sx2o_O5rBDX44IO0DNZJ52Q&s=10" alt="">
+    <h1>Все студенты</h1>
+    {% for student in students_all %}
+        <p>{{ student.first_name }} - {{ student.birth_date }} лет</p>
+    {% empty %}
+        <p>Нет студентов</p>
+    {% endfor %}
+
+    <h2>Фильтр (возраст > 18)</h2>
+    {% for student in filtered_students %}
+        <p>{{ student.first_name }} - {{ student.birth_date }} лет</p>
+    {% endfor %}
+
+    <h2>Исключение (не Иван)</h2>
+    {% for student in excluded_students %}
+        <p>{{ student.name }} - {{ student.age }} лет</p>
+    {% endfor %}
+
+    <h2>Поиск (Q-объекты)</h2>
+    {% for student in search_students %}
+        <p>{{ student.name }} - {{ student.age }} лет</p>
+    {% endfor %}
 {% endblock %}
 
 
