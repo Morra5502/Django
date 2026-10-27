@@ -5,7 +5,7 @@ from django.conf import settings
 class User(AbstractUser):
     ROLE_CHOICES = (
         ("organizer", "Организатор"),
-        ("participan", "Участник")
+        ("participant", "Участник")
     )
 
     role = models.CharField(
@@ -20,6 +20,23 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username} - {self.get_role_display()}"
+
+
+# class Teacher(models.Model):
+#     first_name = models.CharField(max_length=100)
+#     second_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+
+#     teacher_email = models.EmailField(unique=True)
+
+#     events = models.ManyToManyField(
+#         Event,
+#         related_name="teacher",
+#         blank=True
+#     )
+
+#     def __str__(self):
+#         return f"{self.first_name} {self.last_name}"
 
 class Event(models.Model):
     EVENT_TYPE_CHOICES = (
@@ -103,10 +120,8 @@ class Result(models.Model):
     )
     
     time_result = models.DateTimeField(
-        max_length=50, 
         blank=True, 
-        null=True, 
-        verbose_name='Время (формат ЧЧ:ММ:СС)'
+        null=True
     )
     place = models.PositiveIntegerField(blank=True, null=True, verbose_name='Место')
     points = models.PositiveIntegerField(blank=True, null=True, verbose_name='Баллы')

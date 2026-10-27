@@ -1,16 +1,15 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel = "stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>{% block title %}СпортМенеджер{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <h1> {% block header %}  {% endblock %}</h1>
+        <h1>{% block header %}Администрирование спортивных мероприятий{% endblock %}</h1>
     </header>
 
     <main>
@@ -18,18 +17,27 @@
             <ul>
                 {% block nav %}
                 <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'about' %}">О нас</a></li>
-                <li><a href="{% url 'students' %}">Студенты</a></li>
+                {% if user.is_authenticated %}
+                    {% if user.role == 'organizer' %}
+                        <li><a href="{% url 'organizer_dashboard' %}">Кабинет организатора</a></li>
+                    {% else %}
+                        <li><a href="{% url 'participant_dashboard' %}">Кабинет участника</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}">Выйти</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                {% endif %}
                 {% endblock %}
             </ul>
         </nav>
+        
         <section>
-            {% block content %}
-            {% endblock %}
+            {% block content %}{% endblock %}
         </section>
 
         <footer>
-            <p> &copy {% now "Y" %} - {% block footer %} Копирование запрещено {% endblock %} </p>
+            <p>&copy; {% now "Y" %} СпортМенеджер. Все права защищены.</p>
         </footer>
     </main>
 </body>

@@ -1,9 +1,21 @@
-{% extends 'core/base.html' %}
-{% block title %} title {% endblock %}
-{% block header %} Главная {% endblock %}
+{% extends './base.html' %}
+
+{% block title %}Главная - СпортМенеджер{% endblock %}
+
 {% block content %}
-    <h1>Крутой миньон</h1>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-0lEsXH1ovvj6LrvQaQ7sx2o_O5rBDX44IO0DNZJ52Q&s=10" alt="">
+<h2>Добро пожаловать!</h2>
+<p>Платформа для организации и участия в спортивных мероприятиях.</p>
+
+<div class="grid">
+    <div class="card">
+        <h3>Организаторам</h3>
+        <p>Создавайте турниры, управляйте заявками и публикуйте результаты.</p>
+        <a href="{% url 'register' %}?role=organizer" class="btn">Стать организатором</a>
+    </div>
+    <div class="card">
+        <h3>Участникам</h3>
+        <p>Находите интересные соревнования, регистрируйтесь и следите за своими рекордами.</p>
+        <a href="{% url 'register' %}?role=participant" class="btn btn-outline">Стать участником</a>
+    </div>
+</div>
 {% endblock %}
-
-

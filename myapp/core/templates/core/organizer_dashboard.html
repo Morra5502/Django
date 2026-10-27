@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+
+{% block title %}Кабинет организатора{% endblock %}
+{% block header %}Панель организатора{% endblock %}
+
+{% block content %}
+<h2>Управление мероприятиями</h2>
+<div class="grid">
+    <div class="card">
+        <h3>Новое мероприятие</h3>
+        <p>Добавить информацию о предстоящем турнире или забеге.</p>
+        <a href="{% url 'add_event' %}" class="btn">Добавить</a>
+    </div>
+    <div class="card">
+        <h3>Списки участников</h3>
+        <p>Просмотр и модерация регистраций на ваши события.</p>
+        <a href="{% url 'manage_participants' %}" class="btn">Управлять</a>
+    </div>
+    <div class="card">
+        <h3>Публикация результатов</h3>
+        <p>Загрузить протоколы и итоги прошедших соревнований.</p>
+        <a href="{% url 'publish_results' %}" class="btn">Опубликовать</a>
+    </div>
+</div>
+{% endblock %}

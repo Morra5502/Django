@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+
+{% block title %}Кабинет участника{% endblock %}
+{% block header %}Панель участника{% endblock %}
+
+{% block content %}
+<h2>Мои соревнования</h2>
+<div class="grid">
+    <div class="card">
+        <h3>Доступные мероприятия</h3>
+        <p>Каталог активных турниров с возможностью регистрации.</p>
+        <a href="{% url 'browse_events' %}" class="btn">Смотреть</a>
+    </div>
+    <div class="card">
+        <h3>Мои регистрации</h3>
+        <p>Текущие и прошедшие события, на которые вы записаны.</p>
+        <a href="{% url 'my_registrations' %}" class="btn">Мои заявки</a>
+    </div>
+    <div class="card">
+        <h3>Мои результаты</h3>
+        <p>История ваших выступлений и личные рекорды.</p>
+        <a href="{% url 'my_results' %}" class="btn">Статистика</a>
+    </div>
+</div>
+{% endblock %}
